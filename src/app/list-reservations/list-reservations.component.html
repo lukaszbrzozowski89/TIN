@@ -1,0 +1,105 @@
+<h1>Reservations</h1>
+<div class="container">
+  <div class="alert alert-success" *ngIf="message">{{ message }}</div>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Airport From</th>
+          <th>Airport To</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let res of reservations">
+          <td>{{ res.flight.flightNumber }}</td>
+          <td>{{ res.flight.airportFrom }}</td>
+          <td>{{ res.flight.airportTo }}</td>
+          <td>{{ res.user.firstName }}</td>
+          <td>{{ res.user.lastName }}</td>
+          <td>
+            <button (click)="deleteReservation(res.id)" class="btn btn-warning">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <button
+        class="btn btn-success"
+        style="width: 200px"
+        (click)="filterById()"
+      >
+        Filter by User ID
+      </button>
+      <input
+        type="number"
+        name="userId"
+        style="width: 200px; margin-left: 50px"
+        [(ngModel)]="userId"
+      />
+    </div>
+    <br />
+    <div class="container">
+      <button
+        class="btn btn-success"
+        style="width: 200px"
+        (click)="filterByAirportFrom()"
+      >
+        Filter by Airport from
+      </button>
+      <input
+        type="text"
+        name="airportFrom"
+        style="width: 200px; margin-left: 50px"
+        [(ngModel)]="airportFrom"
+      />
+    </div>
+    <br />
+    <div class="container">
+      <button
+        class="btn btn-success"
+        style="width: 200px"
+        (click)="filterByAirportTo()"
+      >
+        Filter by Airport To
+      </button>
+      <input
+        type="text"
+        name="airportTo"
+        style="width: 200px; margin-left: 50px"
+        [(ngModel)]="airportTo"
+      />
+    </div>
+    <br />
+    <div class="container">
+      <button
+        class="btn btn-success"
+        style="width: 200px"
+        (click)="filterByFlightNumber()"
+      >
+        Filter by Flight Id
+      </button>
+      <input
+        type="text"
+        name="flightNumber"
+        style="width: 200px; margin-left: 50px"
+        [(ngModel)]="flightNumber"
+      />
+    </div>
+    <br />
+    <br />
+    <div class="container">
+      <button
+        class="btn btn-success"
+        style="width: 200px"
+        (click)="resetFilters()"
+      >
+        Reset Filter
+      </button>
+    </div>
+  </div>
+</div>

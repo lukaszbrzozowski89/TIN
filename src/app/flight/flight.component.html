@@ -1,0 +1,67 @@
+<h1>Flight</h1>
+
+<div class="container">
+  <div
+    class="alert alert-warning"
+    *ngIf="flightForm.dirty && flightForm.invalid"
+  >
+    Enter valid values
+  </div>
+  <div
+    class="alert alert-warning"
+    *ngIf="flightForm.dirty && targetNumber.invalid"
+  >
+    Enter valid flight number value: max 5 chars
+  </div>
+  <div
+    class="alert alert-warning"
+    *ngIf="flightForm.dirty && targetAirportTo.invalid"
+  >
+    Enter valid aiport To value: max 3 chars
+  </div>
+  <div
+    class="alert alert-warning"
+    *ngIf="flightForm.dirty && targetAirportFrom.invalid"
+  >
+    Enter valid aiport From value: max 3 chars
+  </div>
+  <form (ngSubmit)="!flightForm.invalid && saveFlight()" #flightForm="ngForm">
+    <fieldset class="form-group">
+      <label>Flight Number</label>
+      <input
+        type="text"
+        [(ngModel)]="flight.flightNumber"
+        #targetNumber="ngModel"
+        class="form-control"
+        name="flightNumber"
+        required="required"
+        maxlength="5"
+      />
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Airport from</label>
+      <input
+        type="text"
+        [(ngModel)]="flight.airportFrom"
+        #targetAirportFrom="ngModel"
+        class="form-control"
+        name="airportFrom"
+        required="required"
+        maxlength="3"
+      />
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Airport to</label>
+      <input
+        type="text"
+        #targetAirportTo="ngModel"
+        [(ngModel)]="flight.airportTo"
+        class="form-control"
+        name="airportTo"
+        required="required"
+        maxlength="3"
+      />
+    </fieldset>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>
+</div>

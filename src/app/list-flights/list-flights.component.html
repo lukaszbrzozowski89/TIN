@@ -1,0 +1,36 @@
+<h1>My flights</h1>
+
+<div class="alert alert-success" *ngIf="message">{{ message }}</div>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Airport From</th>
+        <th>Airport To</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <td>{{ flight.flightNumber }}</td>
+        <td>{{ flight.airportFrom }}</td>
+        <td>{{ flight.airportTo }}</td>
+        <td>
+          <button (click)="updateFlight(flight.id)" class="btn btn-success">
+            Update
+          </button>
+        </td>
+        <td>
+          <button (click)="deleteFlight(flight.id)" class="btn btn-warning">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <button (click)="addFlight()" class="btn btn-success">Add</button>
+  </div>
+</div>
